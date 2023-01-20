@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta charset="utf-8">
+<title>Gestionar Convocatoria</title>
+<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+<link th:href="@{/css/GestionarEvento.css}" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/Bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" href="../static/Bootstrap/css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="../static/css/GestionarEvento.css" type="text/css">
+
+</head>
+<body>
+<div>
+            <div id="wb_Heading1" style="top:0px;width:100%;height:100px;z-index:3;">
+             
+                
+                    <label id="Label1" style="line-height:85px;">
+                        Sistema de Gestión de Eventos Estudiantiles
+                    </label>
+            
+                <img src="../images/login.png" class="imagen" width="52px" height="52px">
+            </div>
+            <div id="wb_Heading2" style="width:100%;background-color: #87CEFA;">
+                
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                  <div class="container-fluid">
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" th:href="@{/GestionarEvento}">Gestionar Evento</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link " aria-current="page" th:href="@{/GestionarConvocatoria}">Convocatoria</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" th:href="@{/TrabajosPublicados}">Trabajos Publicados</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" th:href="@{/Programa}">Programa</a>
+                        </li>
+                        <li class="nav-item" >
+                          <a class="nav-link" aria-current="page" th:href="@{/Comisión}">Comisión</a>
+                        </li>
+                        
+                      </ul>
+                      <form class="d-flex" role="search" th:action="@{/GestionarConvocatoria}" >
+                        <input class="form-control me-2" 
+                               name="BuscarConvocatria"
+                               th:value="${BuscarConvocatria}" 
+                               type="search" 
+                               placeholder="Buscar.." 
+                               aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit" >Buscar</button>
+                      </form>
+                    </div>
+                  </div>
+                </nav>
+         
+            </div>
+        </div>
+    <div class="container">
+        <a id="Button1" th:href="@{/Convocatoria}" class="btn btn-primary" style="margin: 8px;padding: 3px;">Crear Convocatoria</a>        
+    </div>
+   
+   
+ 
+    <div class="container tbl-container">
+        <div class="row tbl-fixed">
+        <table
+                    class="table table-success table-hover table-fixer"
+                    cellspacing="0"
+                    style="font-size: 12px; margin-bottom: 0" id="StripedTable">
+                    <thead>
+                        <tr class="gridHeader">
+                            <th style="background: #0dcaf0; border-radius: 7px 0 0 0">Fecha de Inicio</th>
+                            <th style="background: #0dcaf0">Fecha Fin</th>
+                            <th style="background: #0dcaf0">Descripción</th>
+                            <th style="background: #0dcaf0; border-radius: 0 7px 0 0">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <th:block th:each="c:${convocatoria}">
+                            <tr class="border-bottom border-success">
+                                <td th:text="${c.fechaInicio}"></td>
+                                <td th:text="${c.fechaFin}"></td>
+                                <td th:text="${c.descripcion}"></td>
+                                <td>
+                                    <a
+                                        th:href="@{'/eliminarConvocatoria/'+${c.idconvocatoria}}"
+                                        onclick="return confirm('Estás seguro de eliminar la convocatoria')">
+                                        <img src="../images/eliminar.png" width="25px"
+                                    /></a>
+                                    &nbsp; &nbsp;
+                                    <a th:href="@{'/modificarConvocatoria/'+${c.idconvocatoria}}">
+                                        <img src="../images/editar.png" width="25px" />
+                                    </a>
+                                </td>
+                            </tr>
+                        </th:block>
+                    </tbody>
+                    <tr>
+                        <td
+                            style="background-color: #0dcaf0; border-radius: 0 0 7px 7px"
+                            colspan="8"></td>
+                    </tr>
+                </table>
+            </div>
+    </div>
+    
+    <div class="container">
+          <footer>
+              <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
+            <p class="text-center text-muted">Universidad de las Ciencias Informáticas - UCI. Copyright 2022. Todos los derechos reservados</p>
+          </footer>
+        </div>
+
+   <script th:src="@{/js/jquery-1.12.4.min.js}"></script>
+    <script th:src="@{/js/searchindex.js}"></script>
+    <script th:src="@{/js/wb.sitesearch.min.js}"></script>
+    <script th:src="@{/Bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

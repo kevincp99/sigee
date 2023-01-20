@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Gestionar Usuario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body th:fragment="content">
+        <div class="container tbl-container">
+            <div class="row tbl-fixed">
+                <table
+                        class="table table-success table-hover table-fixer"
+                        cellspacing="0"
+                        style="font-size: 12px; margin-bottom: 0" id="StripedTable">
+                        <thead>
+                            <tr class="gridHeader">
+                                <th style="background: #0dcaf0; border-radius: 7px 0 0 0">Usuario</th>
+                                <th style="background: #0dcaf0">Nombre y Apellidos</th>
+                                <th style="background: #0dcaf0">Correo</th>
+                                <th style="background: #0dcaf0">CI</th>
+                                <th style="background: #0dcaf0">Teléfono</th>
+                                <th style="background: #0dcaf0">Facultad</th>
+                                <th style="background: #0dcaf0">Provincia</th>
+                                <th style="background: #0dcaf0">Municipio</th>
+                                <th style="background: #0dcaf0; border-radius: 0 7px 0 0">Rol</th>
+                            </tr>
+                        </thead>
+                        <!-- <tbody>
+                            <th:block th:each="u:${usuario}">
+                                <tr class="border-bottom border-success">
+                                    <td th:text="${u.usuario}"></td>
+                                    <td th:text="${u.nombApellidos}"></td>
+                                    <td th:text="${u.correo}"></td>
+                                    <td th:text="${u.ci}"></td>
+                                    <td th:text="${u.telefono}"></td>
+                                    <td th:text="${u.facultad}"></td>
+                                    <td th:text="${u.provincia}"></td>
+                                    <td th:text="${u.municipio}"></td>
+                                    <td>
+                                        <a
+                                            th:href="@{'/eliminarUsuario/'+${u.id}}"
+                                            onclick="return confirm('Estás seguro de eliminar el usuario')">
+                                            <img src="../images/eliminar.png" width="25px"
+                                        /></a>
+                                        &nbsp; &nbsp;
+                                        <a th:href="@{'/asignarRol/'+${u.rol}}">
+                                            <img src="../images/editar.png" width="25px" />
+                                        </a>
+                                    </td>
+                                </tr>
+                            </th:block>
+                        </tbody> -->
+                        <tr>
+                            <td
+                                style="background-color: #0dcaf0; border-radius: 0 0 7px 7px"
+                                colspan="8">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+        </div>       
+        
+        <script th:src="@{/js/jquery-1.12.4.min.js}"></script>
+        <script th:src="@{/js/searchindex.js}"></script>
+        <script th:src="@{/js/wb.sitesearch.min.js}"></script>
+        <script th:src="@{/Bootstrap/js/bootstrap.min.js}"></script>
+        <!-- JQUERY -->
+        <script th:src="@{/paginacion/jquery-3.4.1.js}"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+            </script>
+        <!-- DATATABLES -->
+        <script th:src="@{/paginacion/jquery.dataTables.min.js}">
+        </script>
+        <!-- BOOTSTRAP -->
+        <script th:src="@{/paginacion/dataTables.bootstrap4.min.js}">
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('#tablax').DataTable({
+                    language: {
+                        processing: "Tratamiento en curso...",
+                        search: "Buscar&nbsp;:",
+                        lengthMenu: "Agrupar de _MENU_ items",
+                        info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                        infoEmpty: "No existen datos.",
+                        infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                        infoPostFix: "",
+                        loadingRecords: "Cargando...",
+                        zeroRecords: "No se encontraron datos con tu busqueda",
+                        emptyTable: "No hay datos disponibles en la tabla.",
+                        paginate: {
+                            first: "Primero",
+                            previous: "Anterior",
+                            next: "Siguiente",
+                            last: "Ultimo"
+                        },
+                        aria: {
+                            sortAscending: ": active para ordenar la columna en orden ascendente",
+                            sortDescending: ": active para ordenar la columna en orden descendente"
+                        }
+                    },
+                    scrollY: 400,
+                    lengthMenu: [ [5, 10, 25, -1], [5, 10, 25, "All"] ],
+                });
+            });
+        </script>
+    </body>
+</html>

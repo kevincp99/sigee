@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body th:fragment="content">
+        <form method="POST" th:action="@{/adicionar}" th:object="${peliculaFormulario}">
+            <input type="hidden" th:field="*{id}" th:value="*{id}"/>
+            <input placeholder="Título" name="titulo" th:field="*{titulo}" th:value="*{titulo}"/><br/>
+            <input placeholder="Duración" name="duracion" th:field="*{duracion}" th:value="*{duracion}"/><br/>
+            <input type="submit" value="adicionar"/>
+        </form>   
+        <a th:href='@{/principal}'>Inicio</a>
+    </body>
+</html>
+
