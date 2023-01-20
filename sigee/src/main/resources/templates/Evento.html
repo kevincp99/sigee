@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+        <title>Evento</title>
+        <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+        <link th:href="@{/css/Evento.css}" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{/Bootstrap/css/bootstrap.min.css}" />
+        <link rel="stylesheet" href="../static/Bootstrap/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="../static/css/Evento.css" type="text/css">
+
+
+
+
+        
+    </head>
+    <body>
+        
+        <div>
+            <div id="wb_Heading1" style="top:0px;width:100%;height:100px;z-index:3;">
+             
+                
+                    <label id="Label1" style="line-height:85px;">
+                        Sistema de Gestión de Eventos Estudiantiles
+                    </label>
+            
+                <img src="../images/login.png" class="imagen" width="52px" height="52px">
+            </div>
+            <div id="wb_Heading2" style="width:100%;background-color: #87CEFA;">
+                
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                  <div class="container-fluid">
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" th:href="@{/GestionarEvento}">Gestionar Evento</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link " aria-current="page" th:href="@{/GestionarConvocatoria}">Convocatoria</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" th:href="@{/TrabajosPublicados}">Trabajos Publicados</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" th:href="@{/Programa}">Programa</a>
+                        </li>
+                        <li class="nav-item" >
+                          <a class="nav-link" aria-current="page" th:href="@{/Comisión}">Comisión</a>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+         
+            </div>
+        </div>
+
+        <div class="container col-8 row">    
+            <form class="row needs-validation"
+                  
+                  method="POST"
+                  th:action="@{/crearEvento}"
+                  th:object="${crearEventoForm}">
+                  <input type="hidden" th:field="*{idevento}" th:value="*{idevento}" />
+                <div class="col-4">
+                    <label for="Editbox1" class="form-label"  
+                           style="display:block;width:100%;z-index:3;top: 5px;">Nombre:</label>
+                    <input type="text" class="form-control" id="Editbox1"
+                           name="NombreEvento"
+                           th:field="*{nombreEvento}"
+                           th:value="*{nombreEvento}"
+                           style="display:block;width: 100%;height:26px;z-index:4;"
+                           spellcheck="false" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustom02" class="form-label" style="display:block;width:100%;z-index:5;top: 5px;">Edición:</label>
+                    <input type="number" 
+                           min="0" 
+                           class="form-control" 
+                           id="Editbox2" 
+                           name="Edicion"
+                           th:field="*{edicion}"
+                           th:value="*{edicion}"
+                           style="display:block;width: 100%;height:26px;z-index:6;" 
+                           spellcheck="false" 
+                           required>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustomUsername" class="form-label" style="display:block;width:100%;z-index:5;top: 5px;">Tipo:</label>
+                    <select type="text" 
+                            class="form-select" 
+                            id="Editbox3"
+                            name="tipo"
+                            th:field="*{tipo}"
+                            th:value="*{tipo}"
+                            style="display:block;width: 103%;height:30px;z-index:8;"
+                            spellcheck="false" 
+                            required>
+                        <option value="" text="'Seleccione'"></option>
+                        <option value="Investigativo">Investigativo</option>
+                        <option value="Formacion">Formacion</option>
+                        <option value="Variado">Variado</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="Editbox4" class="form-label" style="display:block;width:100%;z-index:9;top: 5px;">Alcance:</label>
+                    <input type="text" class="form-control" id="Editbox4" 
+                           name="Alcance"
+                           th:field="*{alcance}"
+                           th:value="*{alcance}"
+                           style="display:block;width: 100%;height:26px;z-index:10;"
+                           spellcheck="false" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustom04" class="form-label" style="display:block;width:100%;z-index:11;top: 5px;">Fecha de Inicio:</label>
+                    <input type="date" id="Editbox5"
+                           name="fechaInicio"
+                           th:field="*{fechaInicio}"
+                           th:value="*{fechaInicio}"
+                           style="display:block;width: 100%;height:26px;z-index:12;"
+                           spellcheck="false" required>
+                </div>
+                <div class="col-md-4">
+                    <label  for="validationCustom04" class="form-label"  style="display:block;width:100%;z-index:13;top: 5px;">Fecha Fin</label>
+                    <input type="date" class="form-control-" id="Editbox6" 
+                           name="fechaFin"
+                           th:field="*{fechaFin}"
+                           th:value="*{fechaFin}"
+                           style="display:block;width: 100%;height:26px;z-index:14;"
+                           spellcheck="false" required>
+                </div>
+
+                <div class="col-md-4 my-3" >
+                    <button type="submit" class="btn btn-outline-primary" value="crearEvento">
+                        Guardar
+                    </button>
+                    <a class="btn btn-outline-primary" href="/GestionarEvento">
+                        Cancelar
+                    </a>
+                </div>
+            </form>    
+        </div>
+        
+        <div class="container">
+          <footer>
+              <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
+            <p class="text-center text-muted">Universidad de las Ciencias Informáticas - UCI. Copyright 2022. Todos los derechos reservados</p>
+          </footer>
+        </div>
+
+        <script th:src="@{/js/jquery-1.12.4.min.js}"></script>
+        <script th:src="@{/js/searchindex.js}"></script>
+        <script th:src="@{/js/wb.sitesearch.min.js}"></script>
+        <script th:src="@{/Bootstrap/js/bootstrap.min.js}"></script>
+    </body>
+</html>
