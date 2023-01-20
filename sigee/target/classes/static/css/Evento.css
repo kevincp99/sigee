@@ -1,0 +1,468 @@
+div#container
+{
+   position: relative;
+   margin: 0 auto 0 auto;
+   text-align: left;
+}
+body
+{
+   background-color: #FFFFFF;
+   color: #000000;
+   font-family: Arial;
+   font-weight: 700;
+   line-height: 1.1875;
+   margin: 0;
+}
+a
+{
+   color: #0000FF;
+   text-decoration: underline;
+}
+a:visited
+{
+   color: #800080;
+}
+a:active
+{
+   color: #FF0000;
+}
+a:hover
+{
+   color: #0000FF;
+   text-decoration: underline;
+}
+input:focus, textarea:focus, select:focus
+{
+   outline: none;
+}
+#wb_Heading1
+{
+   background-color: #1E90FF;
+   background-image: none;
+   border: 0px solid #000000;
+   border-radius: 0px;
+   margin: 0;
+   padding: 0;
+}
+#Heading1
+{
+   color: #000000;
+   font-family: "Trebuchet MS";
+   font-weight: bold;
+   font-style: normal;
+   font-size: 32px;
+   margin: 0;
+}
+#Label1
+{
+   font-family: "Trebuchet MS";
+   font-size: 32px;
+   margin-left: 13px;
+}
+
+.imagen
+{   border-radius: 5px;
+    margin-top: 20px;
+    float: right;
+    margin-right: 10px;
+}
+
+#wb_Heading2
+{
+   background-color: #87CEFA;
+   background-image: none;
+   border: 0px groove #87CEFA;
+   border-radius: 0px;
+   margin: 0;
+   padding: 0;
+   text-align: left;
+}
+#Heading2
+{
+   color: #000000;
+   font-family: Arial;
+   font-weight: bold;
+   font-style: normal;
+   font-size: 32px;
+   margin: 0;
+   text-align: left;
+}
+#wb_Image1
+{
+   vertical-align: top;
+}
+#Image1
+{
+   border: 0px solid #000000;
+   border-radius: 90px;
+   padding: 0;
+   margin: 0;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+}
+#Label4
+{
+   border: 0px solid #CCCCCC;
+   border-radius: 4px;
+   background-color: transparent;
+   background-image: none;
+   color: #000000;
+   font-family: "Trebuchet MS";
+   font-weight: bold;
+   font-style: normal;
+   font-size: 32px;
+   padding: 4px 4px 4px 4px;
+   margin: 0;
+   text-align: left;
+   vertical-align: top;
+}
+#MegaMenu1
+{
+   font-size: 0;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   margin: 0;
+   text-align: center;
+}
+#MegaMenu1
+{
+   font-family: Verdana;
+   font-weight: normal;
+   font-size: 15px;
+}
+#MegaMenu1 li
+{
+   display: inline-block;
+   margin: 0;
+   padding: 0;
+   position: relative;
+}
+li a {
+    text-decoration:none;
+    font-size: 18;
+    font-weight: 700;
+    color: #000000;
+    margin-left: 3px;
+    padding: 5px;
+    
+}
+#MegaMenu1 li a
+{
+   float: left;
+}
+#MegaMenu1 li .submenu
+{
+   display: none;
+   float: left;
+   left: 0;
+   padding: 15px 15px 15px 15px;
+   position: absolute;
+   text-align: left;
+   top: 0;
+   z-index: 9999;
+}
+#MegaMenu1 li .row
+{
+   clear: both;
+   float: left;
+   margin-bottom: 10px;
+   width: 100%;
+}
+#MegaMenu1 li .submenu ul
+{
+   float: left;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+#MegaMenu1 .submenu ul li
+{
+   width: 100%;
+}
+#MegaMenu1 .submenu ul li h2
+{
+   font-family: Verdana;
+   font-weight: normal;
+   font-size: 0;
+   font-style: normal;
+   margin: 0;
+   padding: 0;
+   text-decoration: none;
+}
+#MegaMenu1 .submenu ul li h2
+{
+   background-image: none;
+   background-color: transparent;
+   border-width: 0;
+   color: #000000;
+   display: block;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+#MegaMenu1 .submenu ul li h2 a:hover
+{
+   padding: 6px 0;
+}
+#MegaMenu1 .submenu ul li a
+{
+   display: block;
+   float: none;
+   font-weight: normal;
+   font-style: normal;
+   height: auto;
+   padding: 7px 5px 7px 15px;
+   text-decoration: none;
+   text-indent: 0;
+   white-space: nowrap;
+}
+#MegaMenu1 .submenu ul li a:hover
+{
+   border-style: solid;
+   border-width: 1px;
+   padding: 6px 4px 6px 14px;
+}
+#MegaMenu1 .button
+{
+   cursor: pointer;
+   font-weight: normal;
+   font-style: normal;
+   margin: 0 40px 0 0;
+   outline: 0;
+   padding: 10px 50px 10px 50px;
+   position: relative;
+   text-align: center;
+   text-decoration: none;
+   color: #333333;
+}
+#MegaMenu1 .button:hover
+{
+   color: #FFFFFF;
+}
+#MegaMenu1 .button:active
+{
+   color: #FFFFFF;
+}
+#MegaMenu1 .ui-widget-content a
+{
+   color: #333333;
+}
+#MegaMenu1 .ui-widget-content a:hover
+{
+   color: #FFFFFF;
+}
+#MegaMenu1 .ui-state-default
+{
+   background-color: transparent;
+   background-image: none;
+   border: 1px solid #A9A9A9;
+   color: #333333;
+}
+#MegaMenu1 .ui-state-hover
+{
+   background-color: #337AB7;
+   background-image: none;
+   border-color: #245580;
+   color: #FFFFFF;
+}
+#MegaMenu1 .ui-widget-content
+{
+   background-color: #FFFFFF;
+   background-image: none;
+   border: 1px solid #CCCCCC;
+   color: #333333;
+}
+#MegaMenu1 li i
+{
+   font-size: 16px;
+   width: 18px;
+}
+#MegaMenu1 .arrow
+{
+   margin-top: -8px;
+   margin-left: 0;
+   position: absolute;
+   right: 4px;
+   top: 50%;
+   display: block;
+   overflow: hidden;
+   width: 16px;
+   height: 16px;
+}
+#MegaMenu1 .bullet, #MegaMenu1 .icon
+{
+   left: 0;
+   margin-top: -8px;
+   position: absolute;
+   top: 50%;
+   display: block;
+   overflow: hidden;
+   width: 16px;
+   height: 16px;
+}
+#Label3
+{
+   border: 0px solid #CCCCCC;
+   border-radius: 4px;
+   background-color: transparent;
+   background-image: none;
+   color: #000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-style: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   margin: 0;
+   text-align: left;
+   vertical-align: top;
+}
+#Label5
+{
+   border: 0px solid #CCCCCC;
+   border-radius: 4px;
+   background-color: transparent;
+   background-image: none;
+   color: #000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-style: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   margin: 0;
+   text-align: left;
+   vertical-align: top;
+}
+#Label6
+{
+   border: 0px solid #CCCCCC;
+   border-radius: 4px;
+   background-color: transparent;
+   background-image: none;
+   color: #000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-style: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   margin: 0;
+   text-align: left;
+   vertical-align: top;
+}
+#SiteSearch3
+{
+   border: 1px solid #CCCCCC;
+   border-radius: 4px;
+   background-color: #FFFFFF;
+   background-image: none;
+   color: #000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-style: normal;
+   font-size: 13px;
+   line-height: 16px;
+   padding: 4px 4px 4px 4px;
+   margin: 0;
+   text-align: left;
+}
+#Button3
+{
+   border: 1px solid #2E6DA4;
+   border-radius: 4px;
+   background-color: #3370B7;
+   background-image: none;
+   color: #FFFFFF;
+   font-family: Arial;
+   font-weight: normal;
+   font-style: normal;
+   font-size: 13px;
+   padding: 0;
+   text-align: center;
+   margin: 0;
+}
+#wb_Form1
+{
+   background-color: #FBFBFB;
+   background-image: none;
+   border: 1px solid #000000;
+   border-radius: 10px;
+}
+#Layer1
+{
+   background-color: #FBFBFB;
+   background-image: none;
+   border-radius: 0px;
+}
+#PageFooter1
+{
+   background-color: #D3D3D3;
+   background-image: none;
+   border-radius: 0px;
+   box-sizing: border-box;
+}
+#PageFooter2
+{
+   background-color: #D3D3D3;
+   background-image: none;
+   border-radius: 0px;
+   box-sizing: border-box;
+}
+#PageFooter3
+{
+   background-color: #D3D3D3;
+   background-image: none;
+   border-radius: 0px;
+   box-sizing: border-box;
+}
+
+.form-label {
+
+}
+/*-----Estilo del formulario login---------*/
+.estilo-form {
+    width: 476px;
+    height: 273px;
+    margin-left: -238px;
+    margin-top: -136px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+#usuario {
+    padding: 3px;
+    height: 45px;
+    font-size: 12px;
+}
+
+#contrasena {
+    padding: 3px;
+    height: 45px;
+    font-size: 12px;
+}
+
+#label-index-user {
+    padding: 10px 22px;
+}
+
+#label-index-pass {
+    padding: 10px 22px;
+}
+
+/*Estilo y posicion del usuario y la contraseña*/
+.data {
+    color: #1E90FF;
+    font-weight: 700;
+    left: 40%;
+    right: 40%;
+    position: relative;
+    width: 300px;
+}
+
+/*boton de login*/
+.btn-login {
+    font-size: 12px;
+   margin-top: 10px;
+}
