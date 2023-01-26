@@ -23,16 +23,37 @@ public class Usuario implements Serializable{
     private String userName;
     private String password;
     private String rol;
-    private boolean active;
+    private String nombApell;
+    private String correo;
+    private String facultad;
+    private String ci;
+    private String telefono;
+    private String municipio;
+    private String provincia;
+    
 
     public Usuario() {
     }
 
-    public Usuario(String userName, String password, String roles, boolean active) {
+    public Usuario(String userName, String password, String rol, String nombApell, String correo, String facultad, String ci, String telefono, String municipio, String provincia) {
         this.userName = userName;
         this.password = password;
-        this.rol = roles;
-        this.active = active;
+        this.rol = rol;
+        this.nombApell = nombApell;
+        this.correo = correo;
+        this.facultad = facultad;
+        this.ci = ci;
+        this.telefono = telefono;
+        this.municipio = municipio;
+        this.provincia = provincia;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUserName() {
@@ -55,23 +76,65 @@ public class Usuario implements Serializable{
         return rol;
     }
 
-    public void setRol(String roles) {
-        this.rol = roles;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
-    public boolean isActive() {
-        return active;
+    public String getNombApell() {
+        return nombApell;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setNombApell(String nombApell) {
+        this.nombApell = nombApell;
     }
 
-    public Long getId() {
-        return id;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
+
+    public String getFacultad() {
+        return facultad;
+    }
+
+    public void setFacultad(String facultad) {
+        this.facultad = facultad;
+    }
+
+    public String getCi() {
+        return ci;
+    }
+
+    public void setCi(String ci) {
+        this.ci = ci;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+
 }

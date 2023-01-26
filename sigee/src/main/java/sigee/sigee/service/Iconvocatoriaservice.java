@@ -17,4 +17,6 @@ public interface Iconvocatoriaservice {
     public convocatoria modificarConvocatoria(convocatoria Convocatoria);
     public void eliminarConvocatoria(Long idconvocatoria);
     public List<convocatoria> listarConvocatoria(String BuscarConvocatoria);
+
+    public Object findAll();
 }

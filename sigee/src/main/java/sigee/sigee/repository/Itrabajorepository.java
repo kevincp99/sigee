@@ -6,21 +6,21 @@
 package sigee.sigee.repository;
 
 import java.util.List;
-import sigee.sigee.model.Usuario;
-import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import sigee.sigee.model.trabajo;
 
 /**
  *
- * @author maira
+ * @author KevinHP
  */
 @Repository
-public interface IUsuarioRepo extends JpaRepository<Usuario, Long> {
+public interface Itrabajorepository extends JpaRepository<trabajo, Long>{
     @Query(
-            "SELECT u FROM Usuario u WHERE u.userName LIKE %?1%"
+            "SELECT t FROM trabajo t WHERE t.titulo LIKE %?1%" +
+            "OR t.autor LIKE %?1%" +
+            "OR t.correo LIKE %?1%"
             )
-            public List<Usuario> findAll(String BuscarUsuario);
-    public Optional<Usuario> findByUserName(String nombre);
+    public List<trabajo> findAll(String BuscarTrabajo);
 }

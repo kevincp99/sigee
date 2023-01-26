@@ -31,74 +31,83 @@ public class eventoController {
     @Autowired
     private Ieventoservice servicio;
 
-      @RequestMapping("/GestionarEvento")
-        public String verGestionarEvento(
-          Model model,
-          @Param("BuscarEvento") String BuscarEvento
-        ) {
-          List<evento> listarEventos = servicio.listarEventos(BuscarEvento);
+    @RequestMapping("/GestionarEvento")
+    public ModelAndView verGestionarEvento(
+      @Param("BuscarEvento") String BuscarEvento
+    ) {
+      ModelAndView model = new ModelAndView("principal");
+      model.addObject("view", "GestionarEvento");
 
-          model.addAttribute("evento", listarEventos);
-          model.addAttribute("BuscarEvento", BuscarEvento);
-          return "GestionarEvento";
-        }
+      List<evento> listarEvento = servicio.listarEventos(BuscarEvento);
+
+      model.addObject("Evento", listarEvento);
+      model.addObject("BuscarEvento", BuscarEvento);
+      return model;
+  }
+
         
         @GetMapping("/modificarEvento/{idevento}")
         public ModelAndView modificarEvento(
           @PathVariable(name = "idevento") Long idevento,
           ModelAndView view
         ) {
-          view.setViewName("Evento");
+          view.setViewName("principal");
           view.addObject("crearEventoForm", servicio.getEvento(idevento));
+          view.addObject("view", "Evento");
           return view;
         }
+        
     
-    /*@GetMapping(path = {"", "/GestionarEvento"})
-    public ModelAndView home() {
-        ModelAndView view = new ModelAndView("GestionarEvento");
-        //view.addObject("crearEventoForm", new evento());
-        return view;
-    }*/
+  
+  @RequestMapping("/Evento")
+    public ModelAndView verEvento(
+      
+    ) {
+      ModelAndView model = new ModelAndView("principal");
+      model.addObject("crearEventoForm", new evento());
+      model.addObject("view", "Evento");
+      return model;
+  }
 
-    /*@GetMapping("/GestionarEvento")
-  public ModelAndView GestionarEvento() {
-    ModelAndView mav=new ModelAndView();
-    mav.addObject("view", "GestionarEvento");
-    return mav;
-    evento Evento = new evento();
-    model.addAttribute("crearEventoForm", Evento);
-    return "GestionarEvento";
-  }*/
-    
-    
-    @RequestMapping("/Evento")
-    public String verEvento(Model model) {
-        evento Evento = new evento();
-        model.addAttribute("crearEventoForm", Evento);
-        return "Evento";
-    }
-    
-    /*@PostMapping("/crearEvento")
-    public String crearEvento(
-        @ModelAttribute("crearEventoForm") evento Evento
-        ) {
-        servicio.crearEvento(Evento);
-        return "redirect:/GestionarEvento";
-    }*/
+
+
 
     @PostMapping("/crearEvento")
-    public String crearEvento(evento Evento, ModelAndView model) {
-        model.setViewName("evento");
-        servicio.crearEvento(Evento);
-        //model.addObject("evento", servicio.getAllEvento());
-        return "redirect:/GestionarEvento";
+    public ModelAndView crearEvento(evento Evento, 
+        @Param("BuscarEvento") 
+        String BuscarEvento
+    ) {
+        
+        try {
+            servicio.crearEvento(Evento);
+            ModelAndView model = new ModelAndView("principal");
+
+            List<evento> listarEventos = servicio.listarEventos(BuscarEvento);
+
+            model.addObject("Evento", listarEventos);
+            model.addObject("BuscarEvento", BuscarEvento);
+            model.addObject("view", "GestionarEvento");
+            model.addObject("mensaje","Se ha guardado un evento");
+            return model;
+        } catch (Exception e) {
+            ModelAndView model = new ModelAndView("principal");
+            model.addObject("crearEventoForm", new evento());
+            model.addObject("view", "Evento");
+            model.addObject("mensaje","No se ha guardado el evento");
+            return model;
+        }
     }
    
     
     @GetMapping("/eliminarEvento/{idevento}")
-    public String eliminarEvento(@PathVariable(name = "idevento") Long idevento) {
-          servicio.eliminarEvento(idevento);
-          return "redirect:/GestionarEvento";
+    public ModelAndView eliminarEvento(@PathVariable(name = "idevento") Long idevento) {
+        servicio.eliminarEvento(idevento);
+        ModelAndView model = new ModelAndView("principal");
+        List<evento> listarEventos = servicio.getAllEvento();
+        model.addObject("Evento", listarEventos);
+        model.addObject("view", "GestionarEvento");
+        model.addObject("mensaje","Se ha eliminado el evento");
+        return model;
     }
 
 }

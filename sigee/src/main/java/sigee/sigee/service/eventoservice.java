@@ -26,26 +26,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RequiredArgsConstructor
 public class eventoservice implements Ieventoservice{
 @Autowired
-    private final Ieventorepository _repository;
+    private final Ieventorepository repository;
 
     @Override
     public List<evento> getAllEvento() {
-       return _repository.findAll();
+       return repository.findAll();
     }
 
     @Override
     public evento getEvento(Long idevento) {
-        return _repository.findById(idevento).get();
+        return repository.findById(idevento).get();
     }
 
     @Override
     public evento crearEvento(evento Evento) {
-        return _repository.save(Evento);
+        return repository.save(Evento);
     }
 
     @Override
     public evento modificarEvento(evento Evento) {
-        return _repository.save(Evento);
+        return repository.save(Evento);
     }
 
 
@@ -56,14 +56,14 @@ public class eventoservice implements Ieventoservice{
     
     @Override
     public void eliminarEvento(Long idevento) {
-        _repository.deleteById(idevento);
+        repository.deleteById(idevento);
   }
     @Override
     public List<evento> listarEventos(String BuscarEvento) {
       if (BuscarEvento != null) {
-        return _repository.findAll(BuscarEvento);
+        return repository.findAll(BuscarEvento);
       }
-      return _repository.findAll();
+      return repository.findAll();
     }
      
 }

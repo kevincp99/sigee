@@ -22,39 +22,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RequiredArgsConstructor
 public class convocatoriaservice implements Iconvocatoriaservice{
     @Autowired
-    private final Iconvocatoriarepository _repository;
+    private final Iconvocatoriarepository repository;
 
     @Override
     public List<convocatoria> getAllConvocatoria() {
-       return _repository.findAll();
+       return repository.findAll();
     }
 
     @Override
     public convocatoria getConvocatoria(Long idconvocatoria) {
-        return _repository.findById(idconvocatoria).get();
+        return repository.findById(idconvocatoria).get();
     }
 
     @Override
     public convocatoria crearConvocatoria(convocatoria Convocatoria) {
-        return _repository.save(Convocatoria);
+        return repository.save(Convocatoria);
     }
 
     @Override
     public convocatoria modificarConvocatoria(convocatoria Convocatoria) {
-        return _repository.save(Convocatoria);
+        return repository.save(Convocatoria);
     }
 
     
     @Override
     public void eliminarConvocatoria(Long idconvocatoria) {
-        _repository.deleteById(idconvocatoria);
+        repository.deleteById(idconvocatoria);
   }
     @Override
     public List<convocatoria> listarConvocatoria(String BuscarConvocatoria) {
       if (BuscarConvocatoria != null) {
-        return _repository.findAll(BuscarConvocatoria);
+        return repository.findAll(BuscarConvocatoria);
       }
-      return _repository.findAll();
+      return repository.findAll();
+    }
+
+    @Override
+    public Object findAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
      
 }

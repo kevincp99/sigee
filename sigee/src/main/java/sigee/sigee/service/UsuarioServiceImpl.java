@@ -20,34 +20,41 @@ import org.springframework.stereotype.Service;
 public class UsuarioServiceImpl implements IUsuarioService {
 
     @Autowired
-    private IUsuarioRepo repo;
+    private IUsuarioRepo repository;
     @Autowired
     private PasswordEncoder encoder;
 
     @Override
     public Usuario salvar(Usuario usuario) {
         usuario.setPassword(encoder.encode(usuario.getPassword()));
-        return repo.save(usuario);
+        return repository.save(usuario);
     }
 
     @Override
     public Usuario findById(Long id) {
-        return repo.findById(id).get();
+        return repository.findById(id).get();
     }
 
     @Override
     public List<Usuario> findAll() {
-        return repo.findAll();
+        return repository.findAll();
     }
 
     @Override
     public void eliminar(Long id) {
-        repo.deleteById(id);
+        repository.deleteById(id);
     }
 
     @Override
     public Usuario findByName(String nombre) {
-        return repo.findByUserName(nombre).orElse(null);
+        return repository.findByUserName(nombre).orElse(null);
     }
-
+    
+    @Override
+    public List<Usuario> listarUsuario(String BuscarUsuario) {
+      if (BuscarUsuario != null) {
+        return repository.findAll(BuscarUsuario);
+      }
+      return repository.findAll();
+    }
 }

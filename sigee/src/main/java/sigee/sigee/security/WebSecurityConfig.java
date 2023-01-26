@@ -38,6 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/principal", true)
         );
         http.authorizeRequests()
+                .antMatchers("/","/static/**","/public/**", "/home","/img/**","/images/**","/vendors/**", "/js/**", "/css/**").permitAll()
                 .mvcMatchers(HttpMethod.GET, "/login").permitAll()
                 .mvcMatchers(HttpMethod.GET, "/formulario").hasAuthority("ADMIN")
                 .anyRequest().authenticated();
@@ -46,6 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+        
     }
     
 }

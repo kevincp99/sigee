@@ -29,47 +29,81 @@ public class convocatoriaController {
 
     @Autowired
     private Iconvocatoriaservice servicio;
+    
+    @RequestMapping("/GestionarConvocatoria")
+      public ModelAndView verGestionarConvocatoria(
+        @Param("BuscarConvocatoria") String BuscarConvocatoria
+      ) {
+        ModelAndView model = new ModelAndView("principal");
+        model.addObject("view", "GestionarConvocatoria");
 
-      @RequestMapping("/GestionarConvocatoria")
-        public String verGestionarConvocatoria(
-          Model model,
-          @Param("BuscarConvocatoria") String BuscarConvocatoria
-        ) {
-          List<convocatoria> listarConvocatoria = servicio.listarConvocatoria(BuscarConvocatoria);
+        List<convocatoria> listarConvocatoria = servicio.listarConvocatoria(BuscarConvocatoria);
 
-          model.addAttribute("convocatoria", listarConvocatoria);
-          model.addAttribute("BuscarConvocatoria", BuscarConvocatoria);
-          return "GestionarConvocatoria";
-        }
-        
+        model.addObject("Convocatoria", listarConvocatoria);
+        model.addObject("BuscarConvocatoria", BuscarConvocatoria);
+        return model;
+    }
+     
+    
+    @RequestMapping("/Convocatoria")
+    public ModelAndView verConvocatoria(
+      
+    ) {
+      ModelAndView model = new ModelAndView("principal");
+      model.addObject("crearConvocatoriaForm", new convocatoria());
+      model.addObject("view", "Convocatoria");
+      return model;
+  }
+
+
         @GetMapping("/modificarConvocatoria/{idconvocatoria}")
         public ModelAndView modificarConvocatoria(
           @PathVariable(name = "idconvocatoria") Long idconvocatoria,
           ModelAndView view
         ) {
-          view.setViewName("Convocatoria");
+          view.setViewName("principal");
           view.addObject("crearConvocatoriaForm", servicio.getConvocatoria(idconvocatoria));
+          view.addObject("view", "Convocatoria");
           return view;
         }
  
-    @RequestMapping("/Convocatoria")
-    public String verConvocatoria(Model model) {
-        convocatoria Convocatoria = new convocatoria();
-        model.addAttribute("crearConvocatoriaForm", Convocatoria);
-        return "Convocatoria";
-    }
-
+    
     @PostMapping("/crearConvocatoria")
-    public String crearConvocatoria(convocatoria Convocatoria, ModelAndView model) {
-        model.setViewName("convocatoria");
-        servicio.crearConvocatoria(Convocatoria);
-        return "redirect:/GestionarConvocatoria";
+    public ModelAndView crearConvocatoria(convocatoria Convocatoria, 
+        @Param("BuscarConvocatoria") 
+        String BuscarConvocatoria
+    ) {
+        
+        try {
+            servicio.crearConvocatoria(Convocatoria);
+            ModelAndView model = new ModelAndView("principal");
+
+            List<convocatoria> listarConvocatoria = servicio.listarConvocatoria(BuscarConvocatoria);
+
+            model.addObject("Convocatoria", listarConvocatoria);
+            model.addObject("BuscarConvocatoria", BuscarConvocatoria);
+            model.addObject("view", "GestionarConvocatoria");
+            model.addObject("mensaje","Se ha guardado una convocatoria");
+            return model;
+        } catch (Exception e) {
+            ModelAndView model = new ModelAndView("principal");
+            model.addObject("crearConvocatoriaForm", new convocatoria());
+            model.addObject("view", "Convocatoria");
+            model.addObject("mensaje","No se ha guardado la convocatoria");
+            return model;
+        }
     }
+   
     
     @GetMapping("/eliminarConvocatoria/{idconvocatoria}")
-    public String eliminarConvocatoria(@PathVariable(name = "idconvocatoria") Long idconvocatoria) {
-          servicio.eliminarConvocatoria(idconvocatoria);
-          return "redirect:/GestionarConvocatoria";
+    public ModelAndView eliminarConvocatoria(@PathVariable(name = "idconvocatoria") Long idconvocatoria) {
+        servicio.eliminarConvocatoria(idconvocatoria);
+        ModelAndView model = new ModelAndView("principal");
+        List<convocatoria> listarConvocatoria = servicio.getAllConvocatoria();
+        model.addObject("Convocatoria", listarConvocatoria);
+        model.addObject("view", "GestionarConvocatoria");
+        model.addObject("mensaje","Se ha eliminado la convocatoria");
+        return model;
     }
 
 }

@@ -28,7 +28,7 @@ public class MainController {
     public String success(HttpSession session, Model model) {
         SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
         Authentication auth = ctx.getAuthentication();//aqui está toda la informacion del user 
-        model.addAttribute("view", "opciones");
+        model.addAttribute("view", "inicio");
         return "principal";
     }
 }
