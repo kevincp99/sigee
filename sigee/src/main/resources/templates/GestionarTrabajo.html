@@ -6,31 +6,43 @@ and open the template in the editor.
 -->
 <html>
   <head>
-    <title>Gestionar Usuario</title>
+    <title>TODO supply a title</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+    <!--<link th:href="@{/css/SGE.css" rel="stylesheet}">-->
     <link th:href="@{/css/Evento.css}" rel="stylesheet" />
+    <link th:href="@{/css/GestionarEvento.css}" rel="stylesheet" />
     <link rel="stylesheet" th:href="@{/Bootstrap/css/bootstrap.min.css}" />
     <link
       rel="stylesheet"
       href="../static/Bootstrap/css/bootstrap.min.css"
       type="text/css"
     />
-    <link rel="stylesheet" href="../static/css/Evento.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="../static/css/GestionarEvento.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" th:href="@{/paginacion/bootstrap.css}" />
+    <link
+      rel="stylesheet"
+      th:href="@{/paginacion/dataTables.bootstrap4.min.css}"
+    />
   </head>
   <body th:fragment="content">
     <div class="container">
       <a
         id="Button1"
-        th:href="@{/Usuario}"
+        th:href="@{/Trabajo}"
         class="btn btn-primary"
         style="margin: 8px; padding: 3px"
-        >Crear usuario</a
+        >Registrar Trabajo</a
       >
-    </div>  
+    </div>
+    <!--conno-->
     <div id="success-alert" class="info" th:text="${mensaje}"></div>
-    
+
     <div class="container tbl-container">
       <div class="row tbl-fixed">
         <table
@@ -42,41 +54,43 @@ and open the template in the editor.
           <thead>
             <tr class="gridHeader">
               <th style="background: #0dcaf0; border-radius: 7px 0 0 0">
-                Usuario
+                Título
               </th>
-              <th style="background: #0dcaf0">Nombre y Apellidos</th>
+              <th style="background: #0dcaf0">Autor</th>
               <th style="background: #0dcaf0">Correo</th>
-              <th style="background: #0dcaf0">CI</th>
-              <th style="background: #0dcaf0">Teléfono</th>
               <th style="background: #0dcaf0">Facultad</th>
-              <th style="background: #0dcaf0">Provincia</th>
-              <th style="background: #0dcaf0">Municipio</th>
-              <th style="background: #0dcaf0">Rol</th>
-              <th style="background: #0dcaf0; border-radius: 0 7px 0 0">Acciones</th>
+              <th style="background: #0dcaf0">Grupo</th>
+              <th style="background: #0dcaf0">Tutor</th>
+              <th style="background: #0dcaf0">Año Académico</th>
+              <th style="background: #0dcaf0; border-radius: 0 7px 0 0">
+                Acciones
+              </th>
             </tr>
           </thead>
           <tbody>
-            <th:block th:each="u:${Usuario}">
+            <th:block th:each="t:${Trabajo}">
               <tr class="border-bottom border-success">
-                <td th:text="${u.userName}"></td>
-                <td th:text="${u.nombApell}"></td>
-                <td th:text="${u.correo}"></td>
-                <td th:text="${u.ci}"></td>
-                <td th:text="${u.telefono}"></td>
-                <td th:text="${u.facultad}"></td>
-                <td th:text="${u.provincia}"></td>
-                <td th:text="${u.municipio}"></td>
-                <td th:text="${u.rol}"></td>
+                <td th:text="${t.titulo}"></td>
+                <td th:text="${t.autor}"></td>
+                <td th:text="${t.correo}"></td>
+                <td th:text="${t.facultad}"></td>
+                <td th:text="${t.grupo}"></td>
+                <td th:text="${t.tutor}"></td>
+                <td th:text="${t.annoac}"></td>
+
                 <td>
                   <a
-                    th:href="@{'/eliminarUsuario/'+${u.id}}"
-                    onclick="return confirm('Estás seguro de eliminar el usuario')"
+                    th:href="@{'/eliminarTrabajo/'+${t.idtrabajo}}"
+                    onclick="return confirm('Estás seguro de eliminar el trabajo')"
                   >
                     <img src="../images/eliminar.png" width="25px"
                   /></a>
                   &nbsp; &nbsp;
-                  <a th:href="@{'/asignarRol/'+${u.id}}">
-                    <img src="../images/rol.png" width="25px" />
+                  <a th:href="@{'/modificarTrabajo/'+${t.idtrabajo}}">
+                    <img src="../images/editar.png" width="25px" />
+                  </a>
+                  <a href="#" class="mx-3">
+                    <img src="../images/descargar.png" width="25px" />
                   </a>
                 </td>
               </tr>
@@ -85,11 +99,24 @@ and open the template in the editor.
           <tr>
             <td
               style="background-color: #0dcaf0; border-radius: 0 0 7px 7px"
-              colspan="10"
+              colspan="8"
             ></td>
           </tr>
+          <!--------------------------------------------------------------------->
+
+          <!--------------------------------------------------------------------->
         </table>
       </div>
+    </div>
+
+    <div class="container">
+      <footer>
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
+        <p class="text-center text-muted">
+          Universidad de las Ciencias Informáticas - UCI. Copyright 2022. Todos
+          los derechos reservados
+        </p>
+      </footer>
     </div>
 
     <script th:src="@{/js/sigee.js}"></script>
@@ -107,40 +134,5 @@ and open the template in the editor.
     <script th:src="@{/paginacion/jquery.dataTables.min.js}"></script>
     <!-- BOOTSTRAP -->
     <script th:src="@{/paginacion/dataTables.bootstrap4.min.js}"></script>
-    <script>
-      $(document).ready(function () {
-        $("#tablax").DataTable({
-          language: {
-            processing: "Tratamiento en curso...",
-            search: "Buscar&nbsp;:",
-            lengthMenu: "Agrupar de _MENU_ items",
-            info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
-            infoEmpty: "No existen datos.",
-            infoFiltered: "(filtrado de _MAX_ elementos en total)",
-            infoPostFix: "",
-            loadingRecords: "Cargando...",
-            zeroRecords: "No se encontraron datos con tu busqueda",
-            emptyTable: "No hay datos disponibles en la tabla.",
-            paginate: {
-              first: "Primero",
-              previous: "Anterior",
-              next: "Siguiente",
-              last: "Ultimo",
-            },
-            aria: {
-              sortAscending:
-                ": active para ordenar la columna en orden ascendente",
-              sortDescending:
-                ": active para ordenar la columna en orden descendente",
-            },
-          },
-          scrollY: 400,
-          lengthMenu: [
-            [5, 10, 25, -1],
-            [5, 10, 25, "All"],
-          ],
-        });
-      });
-    </script>
   </body>
 </html>

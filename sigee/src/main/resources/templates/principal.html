@@ -1,81 +1,158 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" th:href="@{/Bootstrap/css/bootstrap.min.css}" />
-        <link rel="stylesheet" th:href="@{/css/GestionarEvento.css}" type="text/css">
-        </head>
-    <body>
-        <!--Cabecera-->
-        <div>
-            <div id="wb_Heading1" style="top:0px;width:100%;height:100px;z-index:3;">
-                <label id="Label1" style="line-height:85px;">
-                    Sistema de Gestión de Eventos Estudiantiles
-                </label>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link th:href="@{/css/Evento.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/Bootstrap/css/bootstrap.min.css}" />
+    <link
+      rel="stylesheet"
+      th:href="@{/css/GestionarEvento.css}"
+      type="text/css"
+    />
 
-                <img src="../images/login.png" class="imagen" width="52px" height="52px">
-            <!--Usuario-->
-                <!-- <div>
+    <style>
+      .ul-menu {
+        margin: 0;
+        padding: 0;
+        background: #243afa;
+        font-family: arial;
+        font-size: 14px;
+        line-height: 30px;
+        overflow: auto;
+        list-style: none;
+      }
+
+      .ul-menu li {
+        text-align: center;
+        float: left;
+        margin-left: 4px;
+      }
+
+      .ul-menu li a {
+        text-decoration: none;
+        display: block;
+        color: rgb(0, 0, 0);
+        font-weight: 500;
+      }
+
+      .ul-menu li a:hover {
+        background: #ffffff;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <!--Cabecera-->
+    <div>
+      <div
+        id="wb_Heading1"
+        style="top: 0px; width: 100%; height: 100px; z-index: 3"
+      >
+        <label id="Label1" style="line-height: 85px">
+          <a href="principal" style="text-decoration: none; color: black">
+            Sistema de Gestión de Eventos Estudiantiles
+          </a>
+        </label>
+
+        <img
+          src="../images/login.png"
+          class="imagen"
+          width="52px"
+          height="52px"
+        />
+        <!--Usuario-->
+        <!-- <div>
                     <img src="../images/login.png" class="imagen" width="52px" height="52px">
                     <label>rol</label>
                     <button class="btn btn-outline-success" type="submit" >Mi Cuenta</button>
                 </div> -->
-            </div>
-            
-            <div id="wb_Heading2" style="width:100%;background-color: #87CEFA;">
-            <!--Menu-->    
-                <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                  <div class="container-fluid">
-                    
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                              <a class="nav-link" aria-current="page" th:href="@{/GestionarEvento}">Gestionar Evento</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link " aria-current="page" th:href="@{/GestionarConvocatoria}">Convocatoria</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" aria-current="page" href="#">Trabajos Publicados</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" aria-current="page" href="#">Programa</a>
-                            </li>
-                            <li class="nav-item" >
-                              <a class="nav-link" aria-current="page" href="#">Comisión</a>
-                            </li>
-                            <li class="nav-item" >
-                              <a class="nav-link" aria-current="page" th:href="@{/Usuario}">Gestionar Usuario</a>
-                            </li>
-                        </ul>
-                        <form class="d-flex" role="search" th:action="@{/GestionarConvocatoria}" >
-                            <input class="form-control me-2" 
-                                name="BuscarConvocatria"
-                                th:value="${BuscarConvocatria}" 
-                                type="search" 
-                                placeholder="Buscar.." 
-                                aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit" >Buscar</button>
-                        </form>
-                    </div>
-                  </div>
-                </nav>
-         
-            </div>
-        </div>
+      </div>
 
+      <nav>
+        <ul class="ul-menu">
+          <li><a href="GestionarEvento">Gestionar Evento</a></li>
+          <li><a href="GestionarConvocatoria">Convocatoria</a></li>
+          <li><a href="GestionarTrabajo">Trabajos Publicados</a></li>
+          <li><a href="GestionarPrograma">Programa</a></li>
+          <li><a href="#">Comisión</a></li>
+          <li><a href="GestionarUsuario">Gestionar Usuario</a></li>
+        </ul>
+      </nav>
 
-        <!-- <form th:action="@{/logout}" method="post">
+      <!--Menu-->
+      <!--  <div id="wb_Heading2" style="width: 100%; background-color: #87cefa">
+        
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    th:href="@{/GestionarEvento}"
+                    >Gestionar Evento</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    th:href="@{/GestionarConvocatoria}"
+                    >Convocatoria</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" th:href="@{/GestionarTrabajo}"
+                    >Trabajos Publicados</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" th:href="@{/GestionarPrograma}">Programa</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#">Comisión</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" th:href="@{/GestionarUsuario}"
+                    >Gestionar Usuario</a
+                  >
+                </li>
+              </ul>
+              <form
+                class="d-flex"
+                role="search"
+                th:action="@{/GestionarConvocatoria}"
+              >
+                <input
+                  class="form-control me-2"
+                  name="BuscarConvocatria"
+                  th:value="${BuscarConvocatria}"
+                  type="search"
+                  placeholder="Buscar.."
+                  aria-label="Search"
+                />
+                <button class="btn btn-outline-success" type="submit">
+                  Buscar
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div> -->
+    </div>
+
+    <!-- <form th:action="@{/logout}" method="post">
             <input type="submit" value="Logout"/>
         </form> -->
-        <div id="variable" th:replace="${view} :: content"></div>
+    <div id="variable" th:replace="${view} :: content"></div>
 
-        
+    <script th:src="@{/js/sigee.js}"></script>
     <script th:src="@{/js/jquery-1.12.4.min.js}"></script>
     <script th:src="@{/js/searchindex.js}"></script>
     <script th:src="@{/js/wb.sitesearch.min.js}"></script>
     <script th:src="@{/Bootstrap/js/bootstrap.min.js}"></script>
-    </body>
+  </body>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <title>Log In</title>
+    <link th:href="@{/css/sigee.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles -->
+        <h2 class="active">Registrarse</h2>
+
+        <div th:if="${param.error}">Las contraseñas no coinciden</div>
+        <div th:if="${param.logout}">Se ha registrado en el sistema</div>
+
+        <!-- Registrar Form -->
+        <form th:action="@{/registro}" th:object="${registrarForm}" method="post">
+          <input
+            type="text"
+            id="Registrar"
+            class="fadeIn second"
+            name="username"
+            placeholder="Usuario"
+          />
+          <input
+            type="password"
+            id="password"
+            class="fadeIn third"
+            name="password"
+            placeholder="Contraseña"
+          />
+          <input
+            type="password"
+            id="password"
+            class="fadeIn third"
+            name="password"
+            placeholder="Repetir Contraseña"
+          />
+          
+          <input type="submit" class="fadeIn fourth" value="registro" />
+          <a th:href="@{/login}">Iniciar Sesión</a>
+
+          
+        </form>
+      </div>
+    </div>
+
+    <script th:src="@{/js/sigee.js}"></script>
+  </body>
+</html>

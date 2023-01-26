@@ -97,3 +97,40 @@ function verificarPasswords() {
  
  }
  /*************************************************************************************************/
+//validar fechas
+function ValidarFechas()
+{
+    // Ontenemos los valores de los campos de contraseñas 
+    var fechaInicio = document.getElementById("fechaInicio").value;
+    var fechaFin = document.getElementById("fechaFin").value;
+ 
+  // Verificamos si las constraseñas no coinciden 
+  if(Date.parse(fechaInicio) > Date.parse(fechaFin)){
+ 
+      document.getElementById("error").classList.add("mostrar");
+      return false;
+  } else {
+      document.getElementById("error").classList.remove("mostrar");
+      document.getElementById("ok").classList.remove("ocultar");
+      document.getElementById("guardar").disabled = true;
+      // Refrescamos la página (Simulación de envío del formulario) 
+      setTimeout(function() {
+          location.reload();
+      }, 3000);
+      return true;
+  }
+}
+
+function validar() {
+        var inicio = document.getElementById('fechaInicio').value; 
+        var finalq  = document.getElementById('fechaFin').value;
+        inicio= new Date(inicio);
+        finalq= new Date(finalq);
+        if(inicio>finalq){
+            window.alert("La fecha de inicio puede ser mayor que la fecha fin");
+            return false;
+//        alert('La fecha de inicio puede ser mayor que la fecha fin');
+        }else{
+            return true;
+        }
+}

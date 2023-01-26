@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title>Gestionar Convocatoria</title>
+    <title>Gestionar Programa</title>
     <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
     <link th:href="@{/css/Evento.css}" rel="stylesheet" />
     <link th:href="@{/css/GestionarEvento.css}" rel="stylesheet" />
@@ -23,13 +23,13 @@
     <div class="container">
       <a
         id="Button1"
-        th:href="@{/Convocatoria}"
+        th:href="@{/Programa}"
         class="btn btn-primary"
         style="margin: 8px; padding: 3px"
-        >Crear Convocatoria</a
+        >Crear Programa</a
       >
     </div>
-      
+
     <!--Emnsaje de erroro-->
     <div id="success-alert" class="info" th:text="${mensaje}"></div>
 
@@ -44,30 +44,26 @@
           <thead>
             <tr class="gridHeader">
               <th style="background: #0dcaf0; border-radius: 7px 0 0 0">
-                Fecha de Inicio
+                Programación
               </th>
-              <th style="background: #0dcaf0">Fecha Fin</th>
-              <th style="background: #0dcaf0">Descripción</th>
               <th style="background: #0dcaf0; border-radius: 0 7px 0 0">
                 Acciones
               </th>
             </tr>
           </thead>
           <tbody>
-            <th:block th:each="c:${Convocatoria}">
+            <th:block th:each="p:${Programa}">
               <tr class="border-bottom border-success">
-                <td th:text="${c.fechaInicio}"></td>
-                <td th:text="${c.fechaFin}"></td>
-                <td th:text="${c.descripcion}"></td>
+                <td th:text="${p.programacion}"></td>
                 <td>
                   <a
-                    th:href="@{'/eliminarConvocatoria/'+${c.idconvocatoria}}"
-                    onclick="return confirm('Estás seguro de eliminar la convocatoria')"
+                    th:href="@{'/eliminarPrograma/'+${p.idprograma}}"
+                    onclick="return confirm('Estás seguro de eliminar la programa')"
                   >
                     <img src="../images/eliminar.png" width="25px"
                   /></a>
                   &nbsp; &nbsp;
-                  <a th:href="@{'/modificarConvocatoria/'+${c.idconvocatoria}}">
+                  <a th:href="@{'/modificarPrograma/'+${p.idprograma}}">
                     <img src="../images/editar.png" width="25px" />
                   </a>
                 </td>
